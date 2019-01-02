@@ -4,6 +4,7 @@ const Schema=mongoose.Schema;
 var tran_schema=new Schema({
     user_id:String,
     book_id:String,
+    book_name:String,
     status:String
 
 });

@@ -31,8 +31,30 @@
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Book 4 book</span>
+      <span class="site-heading-lower text-primary mb-3">welcome <%=res_1.name%></span>
+
+   
     </h1>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="/">Book4Book</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/check/back">Back
+                <span class="sr-only"></span>
+              </a>
+            </li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     
     <section class="page-section cta">
@@ -41,20 +63,20 @@
           <div class="col-xl-9 mx-auto">
                 <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                 <hr>
-                <h3>Borrowed Books</h3>
+                <h3>Books Borrowed</h3>
                 <hr>
-                <form>
-                    <input type='button'value='back'onclick="window.location.href='/check/back'" />
-                </form>
-                
-                <%for(var i=0;i<booknamearr.length;i++){%>
-                    <%console.log("booname")%>
-                    <%console.log(booknamearr[i])%>
-                    <%console.log("bookid")%>
-                    <%console.log(bookidarr[i])%>
-                    <%console.log("index")%>
-                    <%console.log(indexarr[i])%>
-                <%}%>
+
+               <%if(len==0){%>
+                <h4>No Books Borrowed</h4>
+        <%}%>
+
+        <%for(var i=0;i<len;i++){%>
+                <%=booknamearr[i]%>
+        <form>
+                <input type='button'value='return'onclick="window.location.href='/check/return/<%=indexarr[i]%>/<%=bookidarr[i]%>'" />
+        </form>
+	<br>
+        <%}%>
 
             
             

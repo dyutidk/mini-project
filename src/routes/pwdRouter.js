@@ -159,24 +159,39 @@ function router(test){
         Transactiondata.find({$and:[{user_id:res_1._id},{status:'active'}]},function(err,result) {
             // b_id=res.book_id;
             // t_id=res._id;
-            tran_length=result.length
-            for(i=0;i<result.length;i++){
+            if(result){
+
+                tran_length=result.length
+                for(i=0;i<result.length;i++)
+                {
 
                 bookidarr[i]=result[i].book_id;
                 indexarr[i]=result[i]._id;
-            }
-            //loop to find book_name from book_id stored in bookidarr[]
-            for(i=0;i<tran_length;i++)
-            {
-                Bookdata.findOne({_id:bookidarr[i]},function(err,result1){
-                    booknamearr[i]=result1.title;
-                    // console.log(booknamearr[i]);
-                });
+                }
 
-            }
-            if(result){
+                //loop to find book_name from book_id stored in bookidarr[]
+                for(i=0;i<tran_length;i++)
+                {
+                    Bookdata.findOne({_id:bookidarr[i]},function(err,result1){
+                        if(result1){
+                        booknamearr[i]=result1.title;
+                        console.log(booknamearr[i]);}
+                    });
+    
+                }
 
-                res.render('borrowedbooks',{res_1,bookidarr,indexarr,booknamearr});
+
+                // for(i=0;i<tran_length;i++){
+                    
+                    
+                //     // console.log('bookid')
+                //     // console.log(bookidarr[i])
+                //     // console.log('index')
+                //     // console.log(indexarr[i])
+
+                // }
+
+                res.render('borrowedbooks',{res_1,bookidarr,indexarr});
                 // res1 is the object containing current user login
                 //bookidaddr is the array containing _id of books borrowed by user in books table
                 //indexarr is the array of indexes in transaction table
@@ -186,7 +201,7 @@ function router(test){
                 //bookid from bookidarr here update status in books table transaction table and update the above three
                 //arrays(by using the select command once again)  
 
-            }
+            }//end of if Result
 
         })
 

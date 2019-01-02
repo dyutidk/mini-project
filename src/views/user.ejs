@@ -90,7 +90,7 @@
                     <%=books[i].title%>
                     <%=books[i].desc%>
                     <form>
-                        <input type='button'value='borrow'onclick="window.location.href='/check/borrow/<%=books[i]._id%>'" />
+                          <input type='button'value='borrow'onclick="window.location.href='/check/borrow/<%=books[i]._id%>/<%=books[i].title%>'" />
                     </form>
                     <br>
                 <%}%>

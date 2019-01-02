@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Borrowed Books</title>
+    <script type="text/javascript">
+        function codeAddress() {
+            
+        }
+        window.onload = codeAddress;
+        </script>
+</head>
+<body>
+          <form>
+                <input type='button'value='back'onclick="window.location.href='/check/back'" />
+        </form>       
+
+        <h1>Borrowed Books</h1>
+        <%if(len==0){%>
+                <h4>No Books Borrowed</h4>
+        <%}%>
+
+        <%for(var i=0;i<len;i++){%>
+                <%=booknamearr[i]%>
+        <form>
+                <input type='button'value='return'onclick="window.location.href='/check/return/<%=indexarr[i]%>/<%=bookidarr[i]%>'" />
+        </form>
+        <%}%>
+       
+
+
+    
+</body>
+</html>
